@@ -1,7 +1,7 @@
 {
-  "name": "mern-boilerplate",
+  "name": "mern-blog",
   "version": "1.0.0",
-  "description": "MERN boiler plate",
+  "description": "MERN blog",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
