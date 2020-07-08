@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 
-app.get('/', (res, res) => {
+app.get('/', (req, res) => {
     res.json({"Hello": "I am happy to deploy our application"})
 })
 
