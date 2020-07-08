@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
     res.json({"Hello": "I am happy to deploy our application"});
 })
 
-
+// Checks if user is logged in by comparing the token
 app.get("/api/user/auth", auth, (req, res) => {
     res.status(200).json({
         _id: req._id,
