@@ -82,6 +82,7 @@ app.post("/api/user/login", (req, res) => {
     })  
 })
 
+// Handle logout by removing the token
 app.get("/api/user/logout", auth, (req, res) => {
     User.findByIdAndUpdate({ _id: req.user._id }, { token: "" }, (err, data) => {
         if (err) return res.json({ success: false, err });
