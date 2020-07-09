@@ -19,8 +19,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use('*', express.static(path.join(__dirname, "client", "src")))
-
 
 app.get('/', (req, res) => {
     res.json({"Hello": "I am happy to deploy our application"});
