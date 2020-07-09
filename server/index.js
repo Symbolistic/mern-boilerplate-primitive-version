@@ -10,7 +10,7 @@ const { User } = require("./models/user");
 const { auth } = require("./middleware/auth");
 
 mongoose.connect(config.mongoURI,
-                 { useNewUrlParser:true, useUnifiedTopology: true }).then(() => console.log("Connected to Database"))
+                 { useNewUrlParser:true, useUnifiedTopology: true, useCreateIndex: true }).then(() => console.log("Connected to Database"))
                                                                     .catch(err => console.log(err));
 
 
@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 })
 
 // Checks if user is logged in by comparing the token
-app.get("/api/user/auth", auth, (req, res) => {
+app.get("/api/users/auth", auth, (req, res) => {
     res.status(200).json({
         _id: req._id,
         isAuth: true,
@@ -48,7 +48,7 @@ app.post("/api/users/register", (req, res) => {
     });  
 })
 
-app.post("/api/user/login", (req, res) => {
+app.post("/api/users/login", (req, res) => {
     // Find the email
     User.findOne({ email: req.body.email }, (err, user) => {
         // If there is no existing email
@@ -83,7 +83,7 @@ app.post("/api/user/login", (req, res) => {
 })
 
 // Handle logout by removing the token
-app.get("/api/user/logout", auth, (req, res) => {
+app.get("/api/users/logout", auth, (req, res) => {
     User.findByIdAndUpdate({ _id: req.user._id }, { token: "" }, (err, data) => {
         if (err) return res.json({ success: false, err });
         return res.status(200).send({
